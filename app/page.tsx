@@ -1,5 +1,11 @@
 import { createClient } from '@/lib/supabase/server';
 
+type DatabaseItem = {
+  id: number;
+  created_at: string;
+  content: string;
+};
+
 export default async function Instruments() {
   const supabase = await createClient();
   const { data: items, error } = await supabase.from("test").select();
@@ -31,7 +37,7 @@ export default async function Instruments() {
           <div className="p-6">
             {items && items.length > 0 ? (
               <div className="space-y-4">
-                {items.map((item: any) => (
+                {items.map((item: DatabaseItem) => (
                   <div
                     key={item.id}
                     className="bg-gray-50 rounded-lg border border-gray-200 p-4 hover:shadow-md transition-shadow"
