@@ -102,7 +102,7 @@ export default async function AdminDashboard() {
       icon: '👀',
       description: 'Process pending submissions',
       color: 'btn-ghost-modern',
-      badge: pendingSubmissions > 0 ? pendingSubmissions : null
+      badge: (pendingSubmissions || 0) > 0 ? (pendingSubmissions || 0) : null
     },
     {
       name: 'Manage Competitions',
@@ -150,7 +150,7 @@ export default async function AdminDashboard() {
           </div>
 
           {/* Alert for pending reviews */}
-          {pendingSubmissions > 0 && (
+          {(pendingSubmissions || 0) > 0 && (
             <div className="p-4 bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/30 rounded-3xl">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-gradient-to-r from-amber-500 to-orange-500 rounded-xl flex items-center justify-center shadow-lg animate-pulse">
@@ -158,7 +158,7 @@ export default async function AdminDashboard() {
                 </div>
                 <div>
                   <p className="text-amber-300 font-light">
-                    {pendingSubmissions} submission{pendingSubmissions === 1 ? '' : 's'} awaiting your review
+                    {pendingSubmissions || 0} submission{(pendingSubmissions || 0) === 1 ? '' : 's'} awaiting your review
                   </p>
                   <p className="text-amber-400 text-sm font-light">
                     Users are waiting for approval to participate in competitions
