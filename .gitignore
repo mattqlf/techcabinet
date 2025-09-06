@@ -38,3 +38,7 @@ next-env.d.ts
 # Supabase
 supabase/types.ts
 supabase/config.toml # If you are using the Supabase CLI locally and don't want to track its configuration
+
+# Claude Code
+CLAUDE.md 
+PLAN.md

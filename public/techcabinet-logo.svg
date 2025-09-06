@@ -1,0 +1,29 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="tech-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#374151" />
+      <stop offset="100%" style="stop-color:#111827" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Hexagonal outer shape -->
+  <path d="M100 20 L170 60 L170 140 L100 180 L30 140 L30 60 Z" fill="url(#tech-gradient)" stroke="#374151" stroke-width="4"/>
+  
+  <!-- Inner geometric shapes -->
+  <!-- Main vertical bars representing "cabinet doors" -->
+  <rect x="60" y="50" width="25" height="100" fill="white" rx="2"/>
+  <rect x="115" y="50" width="25" height="100" fill="white" rx="2"/>
+  
+  <!-- Horizontal lines representing "shelves" -->
+  <rect x="110" y="70" width="20" height="8" fill="white" rx="1"/>
+  <rect x="110" y="85" width="20" height="8" fill="white" rx="1"/>
+  
+  <!-- Tech elements - small circuits/connectors -->
+  <circle cx="75" cy="65" r="3" fill="#374151"/>
+  <circle cx="75" cy="85" r="3" fill="#374151"/>
+  <circle cx="75" cy="105" r="3" fill="#374151"/>
+  <circle cx="75" cy="125" r="3" fill="#374151"/>
+  
+  <!-- Corner accent -->
+  <path d="M50 60 L70 50 L70 70 Z" fill="white" opacity="0.8"/>
+</svg>

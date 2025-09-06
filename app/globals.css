@@ -1,68 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    /* Modern color palette - vibrant but professional */
+    --background: 240 10% 98%;
+    --foreground: 240 10% 8%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card-foreground: 240 10% 8%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
+    --popover-foreground: 240 10% 8%;
+    
+    /* Primary gradient colors - purple to blue */
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 262 83% 68%;
+    --primary-dark: 262 83% 48%;
+    
+    /* Secondary colors */
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 6% 10%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+    --accent: 240 5% 96%;
+    --accent-foreground: 240 6% 10%;
+    
+    /* Status colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* UI elements */
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 262 83% 58%;
+    --radius: 0.75rem;
+    
+    /* Gradient definitions */
+    --gradient-primary: linear-gradient(135deg, hsl(262, 83%, 58%) 0%, hsl(213, 94%, 68%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(240, 5%, 96%) 0%, hsl(240, 5%, 92%) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(142, 76%, 36%) 0%, hsl(158, 64%, 52%) 100%);
+    --gradient-warning: linear-gradient(135deg, hsl(38, 92%, 50%) 0%, hsl(54, 91%, 60%) 100%);
+    --gradient-danger: linear-gradient(135deg, hsl(0, 84%, 60%) 0%, hsl(17, 88%, 65%) 100%);
   }
+  
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --background: 240 10% 4%;
+    --foreground: 240 5% 95%;
+    --card: 240 10% 6%;
+    --card-foreground: 240 5% 95%;
+    --popover: 240 10% 6%;
+    --popover-foreground: 240 5% 95%;
+    
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 262 83% 68%;
+    --primary-dark: 262 83% 48%;
+    
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 240 5% 95%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 240 4% 16%;
+    --accent-foreground: 240 5% 95%;
+    
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 262 83% 58%;
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border transition-all duration-200 ease-in-out;
   }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  /* Smooth scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-secondary;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-foreground;
+  }
+}
+
+@layer components {
+  /* Gradient backgrounds */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .gradient-success {
+    background: var(--gradient-success);
+  }
+  
+  .gradient-warning {
+    background: var(--gradient-warning);
+  }
+  
+  .gradient-danger {
+    background: var(--gradient-danger);
+  }
+  
+  /* Glass morphism effect */
+  .glass {
+    @apply backdrop-blur-lg bg-white/80 border border-white/20 shadow-xl;
+  }
+  
+  .glass-dark {
+    @apply backdrop-blur-lg bg-gray-900/80 border border-gray-700/20 shadow-xl;
+  }
+  
+  /* Animated hover effects */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .hover-lift:hover {
+    @apply -translate-y-1 shadow-lg shadow-primary/20;
+  }
+  
+  /* Smooth fade in animation */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Slide in from left */
+  .slide-in-left {
+    animation: slideInLeft 0.6s ease-out forwards;
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Slide in from right */
+  .slide-in-right {
+    animation: slideInRight 0.6s ease-out forwards;
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Pulse animation for loading states */
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 5px rgba(139, 92, 246, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+    }
+  }
+  
+  /* Modern button styles */
+  .btn-gradient {
+    @apply bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-light py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300;
+  }
+  
+  .btn-ghost-modern {
+    @apply bg-transparent hover:bg-gray-800/50 text-gray-300 hover:text-white border border-gray-700 hover:border-gray-600 font-light py-2 px-4 rounded-lg transition-all duration-200;
+  }
+  
+  /* Card hover effects */
+  .card-modern {
+    @apply bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-800/50 hover:border-gray-700/50 relative;
+  }
+  
+  .card-modern:hover {
+    @apply -translate-y-1;
+  }
+  
+  /* Fix for gradient borders - prevent overlay issues */
+  .gradient-border-glow {
+    position: relative;
+    isolation: isolate; /* Creates new stacking context */
+  }
+  
+  .gradient-border-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, var(--tw-gradient-from), var(--tw-gradient-to));
+    border-radius: inherit;
+    opacity: 0.15;
+    filter: blur(4px);
+    z-index: -1;
+    transition: opacity 0.3s ease;
+  }
+  
+  .gradient-border-glow:hover::before {
+    opacity: 0.25;
+  }
+  
+  /* Ensure content stays above backgrounds */
+  .content-layer {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Status indicators with animation */
+  .status-indicator {
+    @apply inline-flex items-center justify-center w-2 h-2 rounded-full animate-pulse;
+  }
+  
+  .status-active {
+    @apply bg-green-400 shadow-lg shadow-green-400/50;
+  }
+  
+  .status-pending {
+    @apply bg-yellow-400 shadow-lg shadow-yellow-400/50;
+  }
+  
+  .status-inactive {
+    @apply bg-gray-400 shadow-lg shadow-gray-400/50;
   }
 }
