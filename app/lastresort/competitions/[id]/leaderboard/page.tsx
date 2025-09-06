@@ -41,8 +41,8 @@ export default async function LeaderboardPage({ params }: Props) {
   }
 
   // Get leaderboard data with fresh usernames - simplified approach
-  let leaderboardData = []
-  let leaderboardError = null
+  let leaderboardData: Array<any> = []
+  let leaderboardError: Error | null = null
   
   try {
     // First get all completed submissions with scores
@@ -81,7 +81,7 @@ export default async function LeaderboardPage({ params }: Props) {
       }
     }
   } catch (error) {
-    leaderboardError = error
+    leaderboardError = error instanceof Error ? error : new Error('Unknown error occurred')
     console.error('Leaderboard query error:', error)
   }
   
@@ -243,7 +243,7 @@ export default async function LeaderboardPage({ params }: Props) {
           <div className="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-pink-500 rounded-2xl blur opacity-20"></div>
           <div className="relative bg-gradient-to-br from-red-900/50 to-pink-900/50 border border-red-800/50 rounded-xl p-6 backdrop-blur-sm">
             <h3 className="text-lg font-light text-red-300 mb-2">Error Loading Leaderboard</h3>
-            <p className="text-red-400 font-light">{leaderboardError.message || 'Unknown error occurred'}</p>
+            <p className="text-red-400 font-light">{leaderboardError?.message || 'Unknown error occurred'}</p>
             <p className="text-red-500 text-sm font-light mt-2">Please check the browser console for more details.</p>
           </div>
         </div>

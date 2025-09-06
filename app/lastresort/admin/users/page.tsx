@@ -39,9 +39,15 @@ export default async function AdminUsersPage() {
 
   // Get activity stats for all users in batch queries
   const userIds = users?.map(u => u.id) || []
-  let submissionStats = []
-  let allSubmissions = []
-  let allRegistrations = []
+  let submissionStats: Array<{
+    userId: string;
+    pending: number;
+    completed: number;
+    total: number;
+    registrations: number;
+  }> = []
+  let allSubmissions: Array<{ user_id: string; status: string }> = []
+  let allRegistrations: Array<{ user_id: string }> = []
   
   if (userIds.length > 0) {
     try {
